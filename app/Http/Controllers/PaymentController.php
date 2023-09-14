@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Models\Transaction; // Import your Transaction model
+use Illuminate\Support\Facades\Http;
+
 
 use KingFlamez\Rave\Facades\Rave as Flutterwave;
 

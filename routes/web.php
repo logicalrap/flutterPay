@@ -2,6 +2,7 @@
 use App\Http\Controllers\PaymentController;
 
 
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 //Currency Conversion
-Route::post('/convert-amount', [PaymentController::class, 'ConvertAmount']);
+Route::post('/convert-amount', [PaymentController::class, 'ConvertAmount'])->name('convert-amount');
 
 
 
