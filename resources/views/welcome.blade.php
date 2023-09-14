@@ -88,9 +88,9 @@
                 <div class="mb-3">
                     <label for="detailsAmount" class="form-label">Enter Amount (optional):</label>
                     <div class="input-group">
-                        <input type="number" class="form-control" id="detailsAmount" name="detailsAmount" placeholder="Enter additional amount">
+                        <input type="number" class="form-control" id="paymentAmount" name="paymentAmount" placeholder="Enter additional amount">
                         <span class="input-group-text bg-primary text-white" id="localCurrency" style="border-radius: 0 5px 5px 0;">Local Currency</span>
-                        <span class="input-group-text" id="amountZMW" style="background-color: #f8f9fa; border-radius: 5px 0 0 5px;">100ZMW</span>
+                        <span class="input-group-text" id="convertedAmount" style="background-color: #f8f9fa; border-radius: 5px 0 0 5px;">100ZMW</span>
                     </div>
 
                 <h4>Total Amount: <span id="totalAmount">$0</span></h4>
@@ -118,64 +118,18 @@
         // Initialize total amount on page load
         updateTotalAmount();
     </script>
-      <!-- JavaScript to Send Data and Display Converted Amount -->
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script>
-          $(document).ready(function () {
-              // Function to fetch and display converted amount
-              function updateConvertedAmount() {
-                  var paymentAmount = $('#paymentAmount').val();
 
-                  // Only proceed if paymentAmount is not empty
-                  if (paymentAmount !== '') {
-                      var location = $('#location').val();
 
-                      $.ajax({
-                          url: '/convert-amount', // Your route for converting the amount
-                          type: 'post',
-                          data: {
-                              '_token': '{{ csrf_token() }}',
-                              'paymentAmount': paymentAmount,
-                              'location': location
-                          },
-                          success: function (response) {
-                              $('#convertedAmount').html(response);
-                              console.log(response); // Log the response to the console
-                          },
-                          error: function () {
-                              $('#convertedAmount').html('Conversion test failed. Please check your input.');
-                          }
-                      });
-                  } else {
-                      $('#convertedAmount').html('Amount in your Currency:');
-                  }
-              }
 
-              // Trigger the conversion when the paymentAmount field is changed (user input)
-              $('#paymentAmount').on('input', updateConvertedAmount);
-
-              // Initial conversion when the page loads
-              updateConvertedAmount();
-
-              // Prevent the form from submitting (handled separately for payment)
-              $('#paymentForm').submit(function (e) {
-                  e.preventDefault();
-              });
-          });
-      </script>
   </form>
+<!--- test**************************************************
+    *******************************************************
+    *********************************************************
+    ***************************************************
+    *****************************************************
+    ****************************************************
+    ***************** -->
 
-  <!-- Pay Button -->
-  <button id="payButton" type="button">Pay</button>
 
-  <!-- JavaScript to handle payment -->
-  <script>
-      $(document).ready(function () {
-          $('#payButton').click(function () {
-              // Handle payment logic here
-              alert('Payment logic will be implemented here.');
-          });
-      });
-  </script>
 </body>
 </html>
