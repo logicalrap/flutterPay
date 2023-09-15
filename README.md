@@ -2,7 +2,10 @@
 
 ## System Requirements
 
+Live Demo vist:
+
 Before installing Laravel Framework 8.83.27, ensure that you have the following prerequisites installed on your system:
+
 
 - PHP version 8.1.17 or higher
 - XAMPP or a similar local development environment
@@ -29,8 +32,15 @@ Follow these steps to install and configure Laravel Framework 8.83.27 on your sy
 4. **Generate Application Key**: Run the following command to generate a unique application key for your Laravel project:
 
    ```bash
+
    php artisan key:generate
    ```
+### Test Payment with the following cards
+Card : 5531886652142950 CCV: 564 EXPIRY: 09/32	 PIN 3310 OTP: 12345
+
+Card : 4242424242424242 CCV: 812 EXPIRY: 01/31	 PIN 3310  OTP: 12345
+
+For testing cards and information vist: https://developer.flutterwave.com/docs/integration-guides/testing-helpers/
 
 ## Features
 
@@ -55,6 +65,9 @@ Laravel Framework 8.83.27 offers the following features:
 ### Location Selection
 
 - Users can select their location before making a payment. The application performs real-time currency conversion to display the local currency equivalent.
+
+### XE API for Currency Conversion
+To provide real-time local currency display, the application employs the XE API for currency conversion. This API allows for accurate currency conversion calculations.
 
 ## Sample `.env` Configuration
 

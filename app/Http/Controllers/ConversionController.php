@@ -18,7 +18,10 @@ class ConversionController extends Controller
             $amount = $request->input('paymentAmount'); // Amount entered by the user
 
             // Make the API request to get exchange rate data
-            $response = Http::withBasicAuth('rapson305012185', '7tguuv782ns7166k2ir7dq4dn')
+             $username='rapson305012185';
+             $password='7tguuv782ns7166k2ir7dq4dn';
+
+            $response = Http::withBasicAuth($username, $password)
                 ->get("https://xecdapi.xe.com/v1/convert_from.csv/?from=$from&to=$to&amount=$amount");
 
             if ($response->successful()) {
