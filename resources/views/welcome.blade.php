@@ -78,12 +78,13 @@
                 <div class="mb-3">
                     <label for="location" class="form-label">Select Your Location/Country:</label>
                     <select class="form-select" id="location" name="location">
-                        <option value="us">United States</option>
-                        <option value="ca">Canada</option>
-                        <option value="uk">United Kingdom</option>
-                        <!-- Add more countries as needed -->
+                        @foreach ($countries as $country)
+                            <option value="{{ $country['AlphabeticCode'] }}">{{ $country['Entity'] }}</option>
+                        @endforeach
                     </select>
                 </div>
+
+
 
                 <div class="mb-3">
                     <label for="detailsAmount" class="form-label">Enter Amount (optional):</label>

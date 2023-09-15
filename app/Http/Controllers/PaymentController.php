@@ -175,7 +175,7 @@ class PaymentController extends Controller
     public function ConvertAmount(Request $request)
     {
         $from = 'USD'; // Source currency (always USD)
-        $to = 'ZMW'; // Target currency selected by the user
+        $to = $request->input('location'); // Target currency selected by the user
         $amount = $request->input('paymentAmount'); // Amount entered by the user
 
         // Make the API request to get exchange rate data
@@ -204,7 +204,7 @@ class PaymentController extends Controller
                     // Calculate the converted amount
                     //$convertedAmount = number_format($amount * $conversionRate, 2); // Format the converted amount
 
-                    return "$amount USD = $conversionRate $to";
+                    return " $to $conversionRate ";
                 }
             }
         }
