@@ -20,6 +20,11 @@
             padding: 20px;
             border-radius: 10px;
         }
+            /* Add styles for the <i> element here */
+                .service-price {
+            font-size: 16px;
+            font-weight: normal;
+        }
     </style>
 </head>
 <body>
@@ -30,18 +35,17 @@
                 <div class="service-section">
                     <h2>SEO Optimization</h2>
                     <p>Our monthly SEO optimization service includes keyword research, on-page SEO, backlink building, and performance tracking.</p>
-                    <h3>Price: $199/month</h3>
+                    <h3>Price: <i class="service-price">price on invoice</i></h3>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="service-section">
                     <h2>Content Management</h2>
                     <p>Our content management service includes content creation, publishing, and optimization for SEO.</p>
-                    <h3>Price: $149/month</h3>
+                    <h3>Price: <i class="service-price">price on invoice</i></h3>
                 </div>
             </div>
         </div>
-
         <!-- Details Section -->
         <div class="details-section mt-4">
             <h2>Details</h2>
@@ -87,14 +91,14 @@
 
 
                 <div class="mb-3">
-                    <label for="detailsAmount" class="form-label">Enter Amount (optional):</label>
+                    <label for="detailsAmount" class="form-label">Enter Amount </label>
                     <div class="input-group">
                         <input type="number" class="form-control" id="paymentAmount" name="paymentAmount" placeholder="Enter additional amount">
                         <span class="input-group-text bg-primary text-white" id="localCurrency" style="border-radius: 0 5px 5px 0;">Local Currency</span>
                         <span class="input-group-text" id="convertedAmount" style="background-color: #f8f9fa; border-radius: 5px 0 0 5px;"><!-- The strong/bold style comes from the server --> </span>
                     </div>
 
-                <h4>Total Amount: <span id="totalAmount">$0</span></h4>
+                <!--<h4>Total Amount: <span id="totalAmount">$0</span></h4> -->
                 <button class="btn btn-primary btn-lg float-end">Pay</button>
             </form>
         </div>

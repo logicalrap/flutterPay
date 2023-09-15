@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ConversionController;
 
 
 
@@ -20,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home-index');
 
 //Currency Conversion
-Route::post('/convert-amount', [PaymentController::class, 'ConvertAmount'])->name('convert-amount');
+Route::post('/convert-amount', [ConversionController::class, 'ConvertAmount'])->name('convert-amount');
 
 
 

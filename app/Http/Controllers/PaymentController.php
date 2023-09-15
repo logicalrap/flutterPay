@@ -21,10 +21,10 @@ class PaymentController extends Controller
         // Enter the details of the payment
         $data = [
             'payment_options' => 'card,banktransfer',
-            'amount' => 500,
+            'amount' => request()->paymentAmount,
             'email' => request()->email,
             'tx_ref' => $reference,
-            'currency' => "NGN",
+            'currency' => request()->location,
             'redirect_url' => route('callback'),
             'customer' => [
                 'email' => request()->email,
@@ -33,7 +33,7 @@ class PaymentController extends Controller
             ],
 
             "customizations" => [
-                "title" => 'Movie Ticket',
+                "title" => 'Services Selected',
                 "description" => "20th October"
             ]
         ];
@@ -76,8 +76,11 @@ class PaymentController extends Controller
                 // ... add other relevant fields here
             ]);
 
-            // Return a payment successful response to the user
-            return response()->json(['message' => 'Payment successful']);
+            // Flash a success message to the session
+        session()->flash('success', 'Payment successful');
+
+        // Redirect the user back to the home page
+        return redirect('/');
 
         }
         elseif ($status ==  'cancelled'){
@@ -169,52 +172,6 @@ class PaymentController extends Controller
 
 
 
-
-        //Currency Conversion
-
-    public function ConvertAmount(Request $request)
-    {
-        $from = 'USD'; // Source currency (always USD)
-        $to = $request->input('location'); // Target currency selected by the user
-        $amount = $request->input('paymentAmount'); // Amount entered by the user
-
-        // Make the API request to get exchange rate data
-        $response = Http::withBasicAuth('rapson305012185', '7tguuv782ns7166k2ir7dq4dn')
-            ->get("https://xecdapi.xe.com/v1/convert_from.csv/?from=$from&to=$to&amount=$amount");
-
-        if ($response->successful()) {
-            $data = $response->body();
-
-            // Split the CSV data into lines
-            $lines = explode("\n", $data);
-            //dd($lines);
-
-            // Check if there are at least two lines in the CSV data
-            if (count($lines) >= 2) {
-
-                // Take the third line of data (index 1)
-                $csvData = str_getcsv($lines[2]);
-
-                // Check if the CSV data has enough elements
-                if (count($csvData) >= 5) {
-                    // Extract the conversion rate
-
-                    $conversionRate = floatval($csvData[4]);
-                    $conversionRate = round($conversionRate, 2); // Round to two decimal places
-
-
-                    // Calculate the converted amount
-
-                    //$convertedAmount = number_format($amount * $conversionRate, 2); // Format the converted amount
-                    return "<strong>$to</strong> &nbsp;$conversionRate";
-
-                }
-            }
-        }
-
-        // Handle the API request error
-        return 'Conversion failed. Please check your input.';
-    }
 
 
 
