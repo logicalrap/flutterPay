@@ -200,11 +200,14 @@ class PaymentController extends Controller
                     // Extract the conversion rate
 
                     $conversionRate = floatval($csvData[4]);
+                    $conversionRate = round($conversionRate, 2); // Round to two decimal places
+
 
                     // Calculate the converted amount
-                    //$convertedAmount = number_format($amount * $conversionRate, 2); // Format the converted amount
 
-                    return " $to $conversionRate ";
+                    //$convertedAmount = number_format($amount * $conversionRate, 2); // Format the converted amount
+                    return "<strong>$to</strong> &nbsp;$conversionRate";
+
                 }
             }
         }

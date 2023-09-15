@@ -91,7 +91,7 @@
                     <div class="input-group">
                         <input type="number" class="form-control" id="paymentAmount" name="paymentAmount" placeholder="Enter additional amount">
                         <span class="input-group-text bg-primary text-white" id="localCurrency" style="border-radius: 0 5px 5px 0;">Local Currency</span>
-                        <span class="input-group-text" id="convertedAmount" style="background-color: #f8f9fa; border-radius: 5px 0 0 5px;">100ZMW</span>
+                        <span class="input-group-text" id="convertedAmount" style="background-color: #f8f9fa; border-radius: 5px 0 0 5px;"><!-- The strong/bold style comes from the server --> </span>
                     </div>
 
                 <h4>Total Amount: <span id="totalAmount">$0</span></h4>
@@ -169,8 +169,7 @@
             });
         </script>
 
-    <!-- Pay Button -->
-    <button id="payButton" type="button">Pay</button>
+
 
     <!-- JavaScript to handle payment -->
     <script>
