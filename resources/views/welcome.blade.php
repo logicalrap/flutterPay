@@ -28,6 +28,13 @@
     </style>
 </head>
 <body>
+    <!-- Check if there's a flashed message and display it -->
+@if(session()->has('message'))
+<div class="alert alert-info">
+    {{ session('message') }}
+</div>
+@endif
+
     <div class="container">
         <h1 class="text-center">Monthly SEO & Content Management Services</h1>
         <div class="row">
@@ -105,26 +112,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script>
-        // Calculate and update the total amount based on user inputs
-        function updateTotalAmount() {
-            const seoAmount = parseFloat(document.getElementById('seoAmount').value) || 0;
-            const contentAmount = parseFloat(document.getElementById('contentAmount').value) || 0;
-            const detailsAmount = parseFloat(document.getElementById('detailsAmount').value) || 0;
-            const totalAmount = seoAmount + contentAmount + detailsAmount;
-            document.getElementById('totalAmount').textContent = `$${totalAmount.toFixed(2)}`;
-        }
-
-        // Trigger the calculation when any of the input fields change
-        document.getElementById('seoAmount').addEventListener('input', updateTotalAmount);
-        document.getElementById('contentAmount').addEventListener('input', updateTotalAmount);
-        document.getElementById('detailsAmount').addEventListener('input', updateTotalAmount);
-
-        // Initialize total amount on page load
-        updateTotalAmount();
-    </script>
-
-
 
   </form>
             <!-- JavaScript to Send Data and Display Converted Amount -->
@@ -173,16 +160,5 @@
             });
         </script>
 
-
-
-    <!-- JavaScript to handle payment -->
-    <script>
-        $(document).ready(function () {
-            $('#payButton').click(function () {
-                // Handle payment logic here
-                alert('Payment logic will be implemented here.');
-            });
-        });
-    </script>
 </body>
 </html>

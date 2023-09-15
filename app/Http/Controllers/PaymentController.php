@@ -50,6 +50,9 @@ class PaymentController extends Controller
         return redirect($payment['data']['link']);
     }
 
+
+
+
     /**
      * Obtain Rave callback information
      * @return void
@@ -77,32 +80,30 @@ class PaymentController extends Controller
             ]);
 
             // Flash a success message to the session
-        session()->flash('success', 'Payment successful');
+            session()->flash('message', 'Payment successful');
 
-        // Redirect the user back to the home page
+           // Redirect the user back to the home page
         return redirect('/');
 
         }
         elseif ($status ==  'cancelled'){
             //Put desired action/code after transaction has been cancelled here
+            session()->flash('message', 'You cancelled the transaction.');
+
+            return redirect('/');
+
         }
         else{
             //Put desired action/code after transaction has failed here
+            session()->flash('message', 'Transction failed.');
+
+            return redirect('/');
+
         }
-        // Get the transaction from your DB using the transaction reference (txref)
-        // Check if you have previously given value for the transaction. If you have, redirect to your successpage else, continue
-        // Confirm that the currency on your db transaction is equal to the returned currency
-        // Confirm that the db transaction amount is equal to the returned amount
-        // Update the db transaction record (including parameters that didn't exist before the transaction is completed. for audit purpose)
-        // Give value for the transaction
-        // Update the transaction to note that you have given value for the transaction
-        // You can also redirect to your success page from here
 
     }
 
-      /////////////////
-      ////////////////
-      ///////////////
+
     //Mobile money transfer
 
     public function initiateMobileMoneyTransfer(Request $request)
@@ -168,12 +169,6 @@ class PaymentController extends Controller
             return view('mobile-money-transfer-status', ['status' => 'failed']);
         }
     }
-
-
-
-
-
-
 
 
 

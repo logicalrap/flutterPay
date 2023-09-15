@@ -25,17 +25,17 @@ Route::post('/convert-amount', [ConversionController::class, 'ConvertAmount'])->
 
 
 
-//////////////
+//Payment routes with flutterwave
 Route::post('/pay', [PaymentController::class, 'initialize'])->name('pay');
 Route::get('/rave/callback', [PaymentController::class, 'callback'])->name('callback');
 
 
-
+/*
 
 Route::any('payment-page',[PaymentController::class,'index'])->name('payment');;
 
 Route::get('callback', [PaymentController::class, 'paymentCallback'])->name('payment.callback');
-
+*/
 // Mobile money transfer
 Route::post('/mobile-money-transfer', [PaymentController::class, 'initiateMobileMoneyTransfer'])->name('mobile.money.transfer');
 Route::get('/mobile-money-transfer/callback', [PaymentController::class, 'mobileMoneyTransferCallback'])->name('mobile.money.transfer.callback');
