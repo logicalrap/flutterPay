@@ -35,6 +35,9 @@ Follow these steps to install and configure Laravel Framework 8.83.27 on your sy
 
    php artisan key:generate
    ```
+### run php artisan serve
+This will start the Laravel  development server
+
 ### Test Payment with the following cards
 Card : 5531886652142950 CCV: 564 EXPIRY: 09/32	 PIN 3310 OTP: 12345
 
